@@ -30,7 +30,7 @@ jobs:
           branch_name=${{ github.event.inputs.branch-name }}
           boilerplate=${{ github.event.inputs.boilerplate }}
           # clone the boilerplate repository
-          git clone https://github.com/DevSkillsHQ/$boilerplate.git
+          git clone https://github.com/Amdaris/$boilerplate.git
           
           # replace scripts in package.json with scripts from boilerplate and save full result to package.tmp.json
           jq '.scripts = input.scripts' package.json $boilerplate/package.json > package.tmp.json
@@ -83,7 +83,6 @@ jobs:
         run: |
           echo '## Failed to import ${{ github.event.inputs.boilerplate }}' >> $GITHUB_STEP_SUMMARY
           echo 'Make sure ${{ github.event.inputs.boilerplate }} is a valid boilerplate name.' >> $GITHUB_STEP_SUMMARY
-          echo 'Check https://help.alvalabs.io/en/articles/7972852-supported-coding-test-boilerplates' >> $GITHUB_STEP_SUMMARY
       - name: Success summary
         if: success()
         run: |
